@@ -3,3 +3,5 @@ openai
 requests
 langchain_openai
 dotenv
+ansible
+ansible-runner

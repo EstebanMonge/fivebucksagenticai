@@ -10,13 +10,26 @@ load_dotenv("/usr/local/nagios/agenticai/.env")
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
-
 def send_telegram(state):
-    """
-    LangGraph node that sends the initial Nagios notification.
-    """
+    mode = state.get("notification_mode", "initial")
 
-    message = f""" Nagios Alert
+    if mode == "remediation":
+        message = f""" Automatic remediation
+
+Host: {state["host"]}
+Service: {state["service"]}
+
+Playbook:
+{state["playbook"]}
+
+Status:
+{state["ansible_status"]}
+
+Output:
+{state["ansible_output"]}
+"""
+    else:
+        message = f"""Nagios Alert
 
 Notification Type: {state.get("notification_type", "UNKNOWN")}
 
@@ -30,7 +43,6 @@ State: {state["state"]}
 Output:
 {state["output"]}
 """
-
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
     try:

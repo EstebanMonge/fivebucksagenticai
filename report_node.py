@@ -34,6 +34,4 @@ Service: {state['service']}
     #
     state["documentation"] = message
 
-    create_dokuwiki_page(state)
-
     return state

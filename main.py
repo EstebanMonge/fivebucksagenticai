@@ -11,6 +11,7 @@ state = {
     "service": sys.argv[4],
     "state": sys.argv[5],
     "output": sys.argv[6],
+    "notification_mode": "initial",
 }
 logger.info("===== New Nagios Event =====")
 logger.info(state)

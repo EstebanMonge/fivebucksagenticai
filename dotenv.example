@@ -1,6 +1,21 @@
+### Telegram ###
 TELEGRAM_BOT_TOKEN="putyourbottoken"
 TELEGRAM_CHAT_ID="putyourchatid"
+
+### Openrouter ###
 OPENROUTER_MODEL="openrouter/free"
 OPENROUTER_API_KEY="putyouropenrouterapikey"
+
+### Dokuwiki ###
+DOKUWIKI_URL="dokuwiki.sempaispace.example.com"
 DOKUWIKI_USER="songohan"
 DOKUWIKI_API_TOKEN="putyourdokuwikiapikey"
+
+### Ansible ###
+ANSIBLE_USER=nagios
+ANSIBLE_DIR=/usr/local/nagios/ansible
+ANSIBLE_PLAYBOOK_DIR=/usr/local/nagios/playbooks
+ANSIBLE_CONFIG=/usr/local/nagios/ansible/ansible.cfg
+ANSIBLE_INVENTORY=/usr/local/nagios/ansible/hosts
+ANSIBLE_DEFAULT_LIMIT=all
+ANSIBLE_TIMEOUT=60
