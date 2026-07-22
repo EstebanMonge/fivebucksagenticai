@@ -6,6 +6,7 @@ from report_node import report
 from dokuwiki_node import create_dokuwiki_page
 from find_playbook_node import find_playbook, playbook_router
 from ansible_node import run_ansible_playbook, ansible_router
+from playbook_generator_node import generate_playbook
 import subprocess
 
 class NagiosState(TypedDict):
@@ -67,6 +68,7 @@ builder.add_node("find_playbook", find_playbook)
 builder.add_node("run_ansible_playbook", run_ansible_playbook)
 builder.add_node("investigate", investigate)
 builder.add_node("analyze", analyze)
+builder.add_node("generate_playbook", generate_playbook)
 builder.add_node("report", report)
 builder.add_node("dokuwiki", create_dokuwiki_page)
 
@@ -91,7 +93,8 @@ builder.add_conditional_edges(
 )
 builder.add_edge("telegram_result", END)
 builder.add_edge("investigate", "analyze")
-builder.add_edge("analyze", "report")
+builder.add_edge("analyze", "generate_playbook")
+builder.add_edge("generate_playbook", "report")
 builder.add_edge("report", "dokuwiki")
 builder.add_edge("dokuwiki", END)
 
